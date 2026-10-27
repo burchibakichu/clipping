@@ -10,7 +10,90 @@ import streamlit as st
 
 from clipper import process
 
-st.set_page_config(page_title="AI Clipper", page_icon="🎬", layout="wide")
+st.set_page_config(page_title="AI Clipper", page_icon="🎬", layout="wide", initial_sidebar_state="collapsed")
+
+# Mobile-responsive styling
+st.markdown("""
+<style>
+/* ==========================================
+   Mobile-Responsive Enhancements
+   ========================================== */
+
+/* Touch-friendly buttons & smooth transitions */
+.stButton > button, .stDownloadButton > button {
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Mobile Screen Optimizations (phones & small screens) */
+@media (max-width: 768px) {
+    /* Responsive page container padding */
+    .block-container {
+        padding-top: 1.5rem !important;
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    /* Stack form columns comfortably on phone */
+    [data-testid="column"] {
+        min-width: 100% !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Full-width thumb-friendly buttons on phone */
+    .stButton > button, .stDownloadButton > button {
+        width: 100% !important;
+        min-height: 48px !important;
+        font-size: 1rem !important;
+    }
+
+    /* 2x2 compact grid for metric counters on phone */
+    div[data-testid="stHorizontalBlock"]:has(> div [data-testid="stMetric"]) {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.6rem !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(> div [data-testid="stMetric"]) > div {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+    [data-testid="stMetric"] {
+        background: rgba(128, 128, 128, 0.08);
+        padding: 0.6rem 0.8rem !important;
+        border-radius: 10px !important;
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 0.8rem !important;
+    }
+    [data-testid="stMetricValue"] {
+        font-size: 1.25rem !important;
+    }
+
+    /* Smooth swipeable tabs on phone */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 6px !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        scrollbar-width: none !important;
+        padding-bottom: 4px !important;
+    }
+    .stTabs [data-baseweb="tab"] {
+        padding: 8px 14px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Responsive video player for mobile vertical reels */
+    video {
+        border-radius: 12px !important;
+        max-height: 65vh !important;
+        width: 100% !important;
+        object-fit: contain !important;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
 
 CLIPS_DIR = Path("clips")
 CLIPS_DIR.mkdir(parents=True, exist_ok=True)
