@@ -1,0 +1,9 @@
+# Generated videos and jobs
+clips/
+
+# Python cache & virtualenv
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
